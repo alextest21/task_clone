@@ -1,0 +1,66 @@
+<div class="page-header">
+	<h1>Order show</h1>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Order Info</h3>
+	</div>
+
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>User</th>
+				<th>Total</th>
+				<th>Date create</th>
+			</tr>
+		</thead>
+		
+
+		<tbody>
+			<tr>
+				<td><%= @order.id %></td>
+				<td><%= @order.user_username %></td>
+				<td><%= @order.total %></td>
+				<td><%= @order.created_at.to_s(:create_date) %></td>
+
+			</tr>
+
+		</tbody>
+		
+	</table>
+
+
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Items list</h3>
+	</div>
+
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Category</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		
+        
+		<tbody>
+			<% @order.items.each do |n| %>
+			<tr>
+				<td><%= n.name %></td>
+				<td><%= n.category.name %></td>
+				<td><%= n.price %></td>
+				
+
+			</tr>
+            <% end %>
+		</tbody>
+		
+	</table>
+</div>
+<%= link_to 'Back', admin_orders_path, class: "btn btn-default" %>

@@ -1,0 +1,19 @@
+<div class="page-header">
+	<h1>Add Item</h1>
+</div>
+<% if @items.errors.any? %>
+<div class="alert alert-danger">
+  <h2>This form contains <%= pluralize(@items.errors.count, "error") %>.</h2>
+
+  <ul>
+    <% @items.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="admin-category-form">
+	<%= form_for :items, :url => admin_items_path do |f| %>
+  <%= render 'form', :f => f %>
+  <% end %>
+</div>

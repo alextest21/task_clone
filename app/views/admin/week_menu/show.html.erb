@@ -1,0 +1,63 @@
+<div class="page-header">
+	<h1>Day menu show</h1>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Week day</h3>
+	</div>
+	<div class="panel-body">
+		
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @weekdays.id %></td>
+						<td><%= @weekdays.name %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Items</h3>
+	</div>
+	<div class="panel-body">
+		
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Category</th>
+						<th>Name</th>
+						<th>Price</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					
+					<% @weekdays.items.each do |n| %>
+					<tr>
+						<td><%= n.category.name %></td>
+						<td><%= n.name %></td>
+						<td><%= n.price %></td>
+						
+						
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>

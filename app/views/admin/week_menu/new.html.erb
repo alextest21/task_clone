@@ -1,0 +1,19 @@
+<div class="page-header">
+	<h1>Day menu new</h1>
+</div>
+<% if @weekdays.errors.any? %>
+<div class="alert alert-danger">
+	<h2>This form contains <%= pluralize(@weekdays.errors.count, "error") %>.</h2>
+
+	<ul>
+		<% @weekdays.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="admin-category-form">
+	<%= form_for :weekdays, :url => admin_week_menu_index_path do |f| %>
+	<%= render 'form', :f => f %>
+	<% end %>
+</div>

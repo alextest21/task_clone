@@ -1,0 +1,26 @@
+<div class="page-header">
+	<h1>Edit User</h1>
+</div>
+<% if @users.errors.any? %>
+<div class="alert alert-danger">
+	<h2>This form contains <%= pluralize(@users.errors.count, "error") %>.</h2>
+	
+	<ul>
+		<% @users.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="admin-category-form">
+	<%= form_for :users, url: admin_user_path(@users), method: :patch do |f| %>
+	<%= f.label "Name" %>
+	<%= f.text_field :username, class: "form-control" %>
+	<%= f.label "Email" %>
+	<%= f.text_field :email, class: "form-control" %>
+	<%= f.label :organization %>
+	<%= f.select(:organization_id, options_from_collection_for_select(Organization.all, :id, :name, {:selected => current_user.organization_id }), { :include_blank => true }, { :class => 'form-control' }) %>
+	<%= link_to 'Back', admin_users_path, class: "btn btn-default" %>
+	<%= f.submit 'Save', class: "btn btn-success" %><br>
+	<% end %>
+</div>

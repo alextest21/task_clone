@@ -1,0 +1,32 @@
+<div class="day_menu_list">
+	
+	<label>Day</label>
+
+	<div class="weekdays_button">
+		<ul>
+            <%= hidden_field_tag "weekdays[name]", nil %>
+			<% ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].each do |item| %>
+			<li>
+				<%= f.radio_button :name, item %> 
+				<%= label_tag "weekdays_name_" + item.downcase, item %>
+			</li>
+			<% end %>
+
+		</ul>
+	</div>
+	<%= hidden_field_tag "items[item_ids][]", nil %>
+	<% Category.all.each do |category| %> 
+
+	<label><%= category.name %></label>
+	<ul>
+		<% Item.where(category: category).each do |item| %>
+		<li>
+			<%= check_box_tag "items[item_ids][]", item.id, @weekdays.item_ids.include?(item.id), id: dom_id(item) %>
+			<%= label_tag dom_id(item), item.name %>
+		</li>
+		<% end %>
+	</ul>
+	<% end %>
+	
+	<%= link_to 'Back', admin_week_menu_index_path, class: "btn btn-default" %>
+	<%= f.submit 'Save', class: "btn btn-success" %><br>

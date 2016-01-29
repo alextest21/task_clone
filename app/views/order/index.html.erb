@@ -1,0 +1,32 @@
+<div id="order_index">
+	
+	<% if @daymenu.present? %>
+	<div class="page-header">
+		<h1>Food list for <%= @weekday %> (<%= @date.to_date.strftime("%d.%m.%Y") %>)</h1>
+	</div>
+
+	<% Category.all.each do |category| %> 
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><%= category.name %></h3>
+		</div>
+
+		<table class="table">
+
+			<% @daymenu.items.where(category: category).each do |items| %>
+
+			<tbody>
+				<td><%= items.name %></td>
+				<td><%= items.price %></td>
+			</tbody>
+			<% end %>
+		</table>
+	</div>
+	<% end %>
+
+	<% if (@date.to_date == Date.today) & params[:weekday].present? %>
+	<%= link_to 'Make order', new_order_path, class: "btn btn-success" %>
+	<% end %>
+	
+	<% end %>
+</div>

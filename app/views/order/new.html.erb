@@ -1,0 +1,26 @@
+<div id="order_new">
+<div class="page-header">
+	<h1>New order for <%= Date.today.strftime("%A") %> (<%= Date.today.strftime("%d.%m.%Y") %>)</h1>
+</div>
+<% if @order.errors.any? %>
+<div id="error_explanation">
+	<div class="alert alert-danger" role="alert">
+		<%= @order.errors[:items].first %>
+	</div>
+</div>
+<% end %>
+
+<%= form_for :order, :url => order_index_path do |f| %>
+
+<% Category.all.each do |category| %> 
+
+<label><%= category.name %></label>
+
+<%= select_tag(:item_ids, options_from_collection_for_select(WeekDay.find_items(category), :id, :name_price), class: "form-control", multiple: true) %>
+
+<% end %>
+
+
+<%= f.submit 'Create Order', class: "btn btn-default" %>
+<% end %>
+</div>

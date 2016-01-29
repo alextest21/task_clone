@@ -1,0 +1,56 @@
+<div id="admin_order">
+	<div class="page-header">
+		<h1>Orders for:</h1>
+
+		<div id="date_block">
+			<%= form_tag("/admin/orders", method: "get") do %>
+			<%= date_field_tag(:date, @date) %>
+			<%= submit_tag("Submit", :name => nil, class: "btn btn-success text-uppercase") %>
+			<% end %>
+		</div>
+	</div>
+
+	<% if @orders.present? %>
+	<div class="page-header total_count">
+		<h3>Total: <%= @total %></h3>
+		<h3>Count: <%= @orders.count %></h3>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>User</th>
+					<th>Total</th>
+					<th>Date create</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders.each do |n| %>
+				<tr>
+					<td><%= n.id %></td>
+					<td><%= n.user.username %></td>
+					<td><%= n.total %></td>
+					<td><%= n.created_at.to_s(:create_date) %></td>
+
+					<td class="col-md-1">
+						<%= link_to admin_order_path(n) do %>
+						<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+						<% end %>
+						<%= link_to admin_order_path(n), class: "destroy_link", method: :delete,
+						data: { confirm: 'Are you sure?' } do %>
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<% else %>
+    <div class="page-header">
+    	<h1>No orders</h1>
+    </div>
+    <% end %>
+</div>

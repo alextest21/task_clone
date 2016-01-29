@@ -1,0 +1,15 @@
+
+<div id="weekdays_list">
+	<% for i in 0..6 %>
+
+	<% weekdays = @date + i.day %>
+	
+	<%= link_to order_index_path(:weekday => weekdays.strftime("%d-%m-%Y")), class: "weekday" + (" weekday_active" if weekdays == Date.today).to_s do %>
+	
+		<%= weekdays.strftime("%A") %><br>
+		<%= weekdays.strftime("%d.%m.%Y") %>
+	
+	<% end %>
+	<% end %>
+
+</div>

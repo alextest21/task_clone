@@ -1,0 +1,8 @@
+<%= f.label 'Category' %>
+<%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, {:selected => @items.category_id }), { :include_blank => true }, { :class => 'form-control' }) %>
+<%= f.label 'Name' %>
+<%= f.text_field :name, class: "form-control" %>
+<%= f.label 'Price' %>
+<%= f.text_field :price, class: "form-control" %>
+<%= link_to 'Back', admin_items_path, class: "btn btn-default" %>
+<%= f.submit 'Save', class: "btn btn-success" %><br>

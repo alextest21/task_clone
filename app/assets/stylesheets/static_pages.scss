@@ -1,0 +1,43 @@
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.navbar {
+	margin-bottom: 20px;
+
+	#account-setting{
+		float:right;
+		margin-right:5px;
+	}
+}
+#auth-button, #logout-button{
+	line-height: 50px;
+	float: right;
+}
+#weekdays_list{
+
+	width:1100px;
+	margin:auto;
+	padding: 0 20px;
+	.weekday{
+		width:120px;
+		border:1px solid #eee;
+		float:left;
+		margin-left: 25px;
+
+		&:hover{
+			background: #eee;
+		}
+	}
+	.weekday.weekday_active{
+	    background: #dff0d8;
+	}
+}
+#profile_page{
+	img{
+	   width:171px;
+	   height:180px;
+
+	}
+}

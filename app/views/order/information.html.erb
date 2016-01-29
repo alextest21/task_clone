@@ -1,0 +1,29 @@
+<div class="page-header">
+	<h1>Information about Order</h1>
+</div>
+<% if @order.present? %> 
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Order info</h3>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>First course</th>
+				<th>Main course</th>
+				<th>Drinks</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% Category.all.each do |category| %> 
+			<% @order.items.where(category: category).each do |items| %> 
+			<td><%= items.name %></td>
+			<% end %> 
+			<% end %>
+			<td><%= @order.total %></td>
+		</tbody>
+	</table>
+	<% end %>
+</div>

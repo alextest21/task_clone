@@ -1,0 +1,13 @@
+
+<% if false %>
+<div id="logout-button">
+	<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn btn-default") %>
+</div>
+<% end %>
+
+<% unless user_signed_in? %>
+<div id="auth-button">
+	<%= link_to 'Sign up', sign_up_path, class: "btn btn-success", id: "sign_up_button" %>
+	<%= link_to 'Sign in', sign_in_path, class: "btn btn-default", id: "sign_in_button" %>
+</div>
+<% end %>

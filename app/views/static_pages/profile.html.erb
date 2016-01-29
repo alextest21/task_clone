@@ -1,0 +1,27 @@
+<div id="profile_page">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">My Profile</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Photo</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Organization</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= image_tag(current_user.avatar) %></td>
+						<td><%= current_user.username %></td>
+						<td><%= current_user.email %></td>
+                        <td><%= current_user.organization.name %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
